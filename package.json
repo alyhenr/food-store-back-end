@@ -1,0 +1,19 @@
+{
+  "name": "devio-challenge",
+  "version": "1.0.0",
+  "description": "back-end for the Devio's full stack challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alyhenr/devio-challenge-back-end.git"
+  },
+  "author": "Alysson Henrique",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alyhenr/devio-challenge-back-end/issues"
+  },
+  "homepage": "https://github.com/alyhenr/devio-challenge-back-end#readme"
+}
