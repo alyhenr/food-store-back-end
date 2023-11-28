@@ -4,6 +4,6 @@ import { categoriesController } from "../controllers/index.js";
 
 const categoriesRouter = Router();
 
-categoriesRouter.post("/", categoriesController.post)
+categoriesRouter.post("/", categoriesController.post);
 
 export { categoriesRouter };

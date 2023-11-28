@@ -2,7 +2,7 @@ import httpStatus from "http-status";
 
 export default (message = "Something went wrong...") => {
     return {
-        conflict, notFound
+        conflict, notFound, badRequest, forbidden
     };
 
     function conflict() {
@@ -14,6 +14,18 @@ export default (message = "Something went wrong...") => {
     function notFound() {
         return {
             message, status: httpStatus.NOT_FOUND,
+        }
+    }
+
+    function badRequest() {
+        return {
+            message, status: httpStatus.BAD_REQUEST,
+        }
+    }
+
+    function forbidden() {
+        return {
+            message, status: httpStatus.FORBIDDEN,
         }
     }
 }
