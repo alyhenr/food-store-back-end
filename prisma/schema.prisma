@@ -63,23 +63,23 @@ model Order {
   createdAt DateTime @default(now())
   updatdeAt DateTime @updatedAt
 
-  aditionals AditionalToOrder[]
+  additionals AdditionalToOrder[]
 }
 
-model Aditional {
+model Additional {
   id String @id @default(cuid())
-  name String @db.VarChar(50)
+  name String @db.VarChar(50) @unique
   price Int
 
-  orders AditionalToOrder[]
+  orders AdditionalToOrder[]
 }
 
-model AditionalToOrder {
+model AdditionalToOrder {
   order Order @relation(fields: [orderId], references: [id])
   orderId String
 
-  aditional Aditional @relation(fields: [aditionalId], references: [id])
-  aditionalId String
+  additional Additional @relation(fields: [additionalId], references: [id])
+  additionalId String
 
-  @@id([aditionalId, orderId])
+  @@id([additionalId, orderId])
 }
