@@ -30,6 +30,8 @@ model Category {
 model Product {
   id String @id @default(cuid())
 
+  name String @db.VarChar(25)
+
   category Category @relation(fields: [categoryId], references: [id])
   categoryId String
 

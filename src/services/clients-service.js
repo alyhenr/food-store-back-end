@@ -1,5 +1,5 @@
 import appErrors from "../errors/appErrors.js";
-import { clientsRepository } from "../repositories/clients-repository.js";
+import { clientsRepository } from "../repositories/index.js";
 
 
 async function create(name) {

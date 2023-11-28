@@ -1,4 +1,4 @@
-import { clientsService } from "../services/clients-service.js";
+import { clientsService } from "../services/index.js";
 
 async function post(req, res) {
     const { name } = req.body;
