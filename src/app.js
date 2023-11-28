@@ -5,7 +5,7 @@ import cors from "cors";
 
 import { connectDb, disconnectDB } from "./config/database.js";
 
-import { clientsRouter, productsRouter } from "./routers/index.js";
+import { categoriesRouter, clientsRouter, productsRouter } from "./routers/index.js";
 import errorsHandler from "./middlewares/errors-handler.js";
 
 const app = express();
@@ -16,6 +16,7 @@ app
     .get("/health", (_, res) => { res.send("Server is up!"); })
     .use("/clients", clientsRouter)
     .use("/products", productsRouter)
+    .use("/categories", categoriesRouter)
     .use(errorsHandler);
 
 export function init() {
