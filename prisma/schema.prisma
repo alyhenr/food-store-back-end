@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id String @id @default(cuid())
+  name String @db.VarChar(50)
+
+  orders Order[]
+}
+
+model Category {
+  id String @id @default(cuid())
+  name String @db.VarChar(50)
+
+  createdAt DateTime @default(now())
+  updatdeAt DateTime @updatedAt
+
+  products Product[]
+}
+
+model Product {
+  id String @id @default(cuid())
+
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  createdAt DateTime @default(now())
+  updatdeAt DateTime @updatedAt
+
+  orders Order[]
+}
+
+enum OrderStatus {
+  PENDING
+  FINISHED
+  CANCELLED
+}
+
+model Order {
+  id String @id @default(cuid())
+
+  client Client @relation(fields: [client_id], references: [id])
+  client_id String
+
+  product Product @relation(fields: [product_id], references: [id])
+  product_id String
+
+  quantity Int
+  status OrderStatus
+  total Int
+
+  createdAt DateTime @default(now())
+  updatdeAt DateTime @updatedAt
+
+  aditionals AditionalToOrder[]
+}
+
+model Aditional {
+  id String @id @default(cuid())
+  name String @db.VarChar(50)
+  price Int
+
+  orders AditionalToOrder[]
+}
+
+model AditionalToOrder {
+  order Order @relation(fields: [orderId], references: [id])
+  orderId String
+
+  aditional Aditional @relation(fields: [aditionalId], references: [id])
+  aditionalId String
+
+  @@id([aditionalId, orderId])
+}
