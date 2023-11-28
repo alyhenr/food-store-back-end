@@ -17,3 +17,13 @@ async function findByName(name) {
         where: { name, }
     });
 }
+
+async function additionalToOrder(orderId, additionalId) {
+    return await prisma.additionalToOrder.create({
+        data: { orderId, additionalId, }
+    });
+}
+
+export const additionalsRepository = {
+    create, findById, findByName, additionalToOrder
+};
