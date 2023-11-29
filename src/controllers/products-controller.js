@@ -6,6 +6,13 @@ async function post(req, res) {
 
     res.send(newProduct);
 }
+
+async function getAll(req, res) {
+    const products = await productsService.getAll();
+
+    res.send(products);
+}
+
 export const productsController = {
-    post,
+    post, getAll
 };

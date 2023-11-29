@@ -8,6 +8,10 @@ async function create(name, categoryId) {
     return productsRepository.create(name, categoryId);
 };
 
+function getAll() {
+    return productsRepository.findAll();
+}
+
 export const productsService = {
-    create
+    create, getAll
 };
