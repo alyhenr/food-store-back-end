@@ -31,6 +31,9 @@ model Product {
   id String @id @default(cuid())
 
   name String @db.VarChar(25)
+  imageUrl String @db.Text
+  description String @db.Text
+  price Int
 
   category Category @relation(fields: [categoryId], references: [id])
   categoryId String
