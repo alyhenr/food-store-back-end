@@ -6,6 +6,8 @@ import { categoriesSchema } from "../schemas/categories-schemas.js";
 
 const categoriesRouter = Router();
 
-categoriesRouter.post("/", validateBody(categoriesSchema), categoriesController.post);
+categoriesRouter
+    .post("/", validateBody(categoriesSchema), categoriesController.post)
+    .get("/", categoriesController.get);
 
 export { categoriesRouter };

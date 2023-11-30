@@ -8,6 +8,10 @@ async function create(name) {
     return categoriesRepository.create(name);
 };
 
+function findAll() {
+    return categoriesRepository.findAll();
+}
+
 export const categoriesService = {
-    create
+    create, findAll
 };

@@ -6,6 +6,13 @@ async function post(req, res) {
 
     res.send(newCategory);
 }
+
+async function get(req, res) {
+    const categories = await categoriesService.findAll();
+
+    res.send(categories);
+}
+
 export const categoriesController = {
-    post,
+    post, get
 };
