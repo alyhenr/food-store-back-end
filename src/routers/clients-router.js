@@ -1,9 +1,11 @@
 import { Router } from "express";
 
 import { clientsController } from "../controllers/index.js";
+import { validateBody } from "../middlewares/validation-middleware.js";
+import { clientsSchema } from "../schemas/clients-schemas.js";
 
 const clientsRouter = Router();
 
-clientsRouter.post("/", clientsController.post);
+clientsRouter.post("/", validateBody(clientsSchema), clientsController.post);
 
 export { clientsRouter };
