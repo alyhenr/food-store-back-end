@@ -20,6 +20,7 @@ model Client {
 model Category {
   id String @id @default(cuid())
   name String @db.VarChar(50) @unique
+  imageUrl String @db.Text
 
   createdAt DateTime @default(now())
   updatdeAt DateTime @updatedAt
