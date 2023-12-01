@@ -72,7 +72,9 @@ model Order {
 
 model Additional {
   id String @id @default(cuid())
-  name String @db.VarChar(50) @unique
+  name String @db.VarChar(50)
+  description String @db.Text
+  imageUrl String @db.Text
   price Int
 
   orders AdditionalToOrder[]

@@ -5,6 +5,8 @@ import { additionalsSchema } from "../schemas/additionals-schemas.js";
 
 const additionalsRouter = Router();
 
-additionalsRouter.post("/", validateBody(additionalsSchema), additionalsController.create);
+additionalsRouter
+    .post("/", validateBody(additionalsSchema), additionalsController.create)
+    .get("/", additionalsController.get);
 
 export { additionalsRouter };

@@ -1,13 +1,14 @@
 import appErrors from "../errors/appErrors.js";
 import { additionalsRepository } from "../repositories/index.js";
 
-async function create(name, price) {
-    const additional = await additionalsRepository.findByName(name);
-    if (additional) throw appErrors("Additional already exist").conflict();
+async function create(name, imageUrl, description, price) {
+    return additionalsRepository.create(name, imageUrl, description, price);
+}
 
-    return additionalsRepository.create(name, price);
+async function findAll() {
+    return additionalsRepository.findAll();
 }
 
 export const additionalsService = {
-    create,
+    create, findAll
 };
