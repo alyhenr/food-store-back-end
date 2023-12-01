@@ -1,8 +1,8 @@
 import { categoriesService } from "../services/index.js";
 
 async function post(req, res) {
-    const { name } = req.body;
-    const newCategory = await categoriesService.create(name)
+    const { name, imageUrl } = req.body;
+    const newCategory = await categoriesService.create(name, imageUrl)
 
     res.send(newCategory);
 }

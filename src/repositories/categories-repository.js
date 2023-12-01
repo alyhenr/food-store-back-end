@@ -1,9 +1,9 @@
 import { prisma } from "../config/database.js";
 
-async function create(name) {
+async function create(name, imageUrl) {
     return await prisma.category.create({
         data: {
-            name
+            name, imageUrl
         }
     });
 }
