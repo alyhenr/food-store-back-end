@@ -11,12 +11,14 @@ async function validateAdditional(additionalId) {
     if (!additional) throw appErrors("Additional does not exist").badRequest();
 }
 
-async function create(clientId, productId, quantity, total, additionals) {
+async function create(clientName, productId, quantity, total, additionals) {
     const product = await productsRepository.findById(id);
     if (!product) throw appErrors("Product not found").notFound();
 
-    const client = await clientsRepository.findById(id);
-    if (!client) throw appErrors("Client not found").notFound();
+    let client = await clientsRepository.findByName(clientName);
+    if (!client) {
+        client = await clientsRepository.create(clientName)
+    }
 
     if (additionals) {
         for (let i = 0; i < additionals.length; ++i) {
@@ -24,7 +26,7 @@ async function create(clientId, productId, quantity, total, additionals) {
         }
     }
 
-    const newOrder = await ordersRepository.create(clientId, productId, quantity, total);
+    const newOrder = await ordersRepository.create(client.id, productId, quantity, total);
 
     if (additionals) {
         for (let i = 0; i < additionals.length; ++i) {

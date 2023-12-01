@@ -1,8 +1,8 @@
 import Joi from "joi";
 
 export const ordersSchema = Joi.object({
-    clientId: Joi.string().required(),
     productId: Joi.string().required(),
+    clientName: Joi.string().required(),
     quantity: Joi.number().positive(),
     total: Joi.number().positive(),
     observations: Joi.string(),
