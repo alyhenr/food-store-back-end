@@ -35,7 +35,11 @@ async function findByStatus(status) {
 }
 
 async function findAll() {
-    return await prisma.order.findMany();
+    return await prisma.order.findMany({
+        include: {
+            product: true, client: true,
+        },
+    });
 }
 
 async function deleteById(id) {
