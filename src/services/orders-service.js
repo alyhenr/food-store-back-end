@@ -26,7 +26,7 @@ async function create(clientName, productId, quantity, total, paymentMethod, obs
         }
     }
 
-    const newOrder = await ordersRepository.create(client.id, productId, quantity, total, paymentMethod, observations);
+    const newOrder = await ordersRepository.create(client.id, productId, quantity, paymentMethod, total, observations ?? null);
 
     if (additionals?.length) {
         for (let i = 0; i < additionals.length; ++i) {
