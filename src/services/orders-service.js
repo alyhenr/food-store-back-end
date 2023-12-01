@@ -47,7 +47,6 @@ async function updateStatus(id, status) {
     const order = await ordersRepository.findById(id);
     if (!order) throw appErrors("Order not found").notFound();
 
-    if (order.status === 'FINISHED') throw appErrors("Order already finished").forbidden();
     if (order.status === 'CANCELLED') throw appErrors("Order was cancelled").forbidden();
 
     const updatedOrder = await ordersRepository.updateStatus(id, status);

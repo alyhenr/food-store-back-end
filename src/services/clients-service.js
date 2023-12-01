@@ -1,12 +1,8 @@
-import appErrors from "../errors/appErrors.js";
 import { clientsRepository } from "../repositories/index.js";
 
-
-async function create(name) {
-    const existingClient = await clientsRepository.findByName(name);
-
-    if (existingClient) throw appErrors("Client already exist").conflict(); //TODO
-
+function create(name) {
+    //Not checking if client already exist anymore, because a code field was added, so the same client can exist with different orders and
+    // different codes are going to be generate
     return clientsRepository.create(name);
 }
 
