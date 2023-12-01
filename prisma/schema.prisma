@@ -63,7 +63,7 @@ model Order {
   quantity Int
   status OrderStatus
   total Int
-  observations String @db.Text
+  observations String? @db.Text
 
   createdAt DateTime @default(now())
   updatdeAt DateTime @updatedAt

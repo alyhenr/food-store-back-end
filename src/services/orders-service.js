@@ -18,14 +18,18 @@ async function create(clientId, productId, quantity, total, additionals) {
     const client = await clientsRepository.findById(id);
     if (!client) throw appErrors("Client not found").notFound();
 
-    for (let i = 0; i < additionals.length; ++i) {
-        await validateAdditional(additionals[i].id);
+    if (additionals) {
+        for (let i = 0; i < additionals.length; ++i) {
+            await validateAdditional(additionals[i].id);
+        }
     }
 
     const newOrder = await ordersRepository.create(clientId, productId, quantity, total);
 
-    for (let i = 0; i < additionals.length; ++i) {
-        await bindAdditionalToOrder(orderId, additionals[i].id);
+    if (additionals) {
+        for (let i = 0; i < additionals.length; ++i) {
+            await bindAdditionalToOrder(orderId, additionals[i].id);
+        }
     }
 
     return newOrder;

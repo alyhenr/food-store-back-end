@@ -2,7 +2,7 @@ import { ordersService } from "../services/index.js";
 
 async function post(req, res) {
     const { clientId, productId, quantity, total } = req.body;
-    const newOrder = await ordersService.create(clientId, productId, quantity, total);
+    const newOrder = await ordersService.create(clientId, productId, quantity, total, observations, additionals);
 
     res.send(newOrder);
 }
