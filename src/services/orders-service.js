@@ -12,7 +12,7 @@ async function validateAdditional(additionalId) {
 }
 
 async function create(clientName, productId, quantity, total, paymentMethod, observations, additionals) {
-    const product = await productsRepository.findById(id);
+    const product = await productsRepository.findById(productId);
     if (!product) throw appErrors("Product not found").notFound();
 
     let client = await clientsRepository.findByName(clientName);
@@ -20,7 +20,7 @@ async function create(clientName, productId, quantity, total, paymentMethod, obs
         client = await clientsRepository.create(clientName)
     }
 
-    if (additionals) {
+    if (additionals?.length) {
         for (let i = 0; i < additionals.length; ++i) {
             await validateAdditional(additionals[i].id);
         }
@@ -28,7 +28,7 @@ async function create(clientName, productId, quantity, total, paymentMethod, obs
 
     const newOrder = await ordersRepository.create(client.id, productId, quantity, total, paymentMethod, observations);
 
-    if (additionals) {
+    if (additionals?.length) {
         for (let i = 0; i < additionals.length; ++i) {
             await bindAdditionalToOrder(orderId, additionals[i].id);
         }
