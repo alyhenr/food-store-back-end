@@ -1,9 +1,9 @@
 import { prisma } from "../config/database.js";
 
-async function create(clientId, orderId, quantity, total) {
+async function create(clientId, productId, quantity, paymentMethod, total, observations) {
     return await prisma.order.create({
         data: {
-            clientId, orderId, quantity, total
+            clientId, productId, quantity, paymentMethod, total, observations
         }
     });
 }

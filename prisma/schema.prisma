@@ -68,7 +68,7 @@ model Order {
   productId String
 
   quantity Int
-  status OrderStatus
+  status OrderStatus @default(PENDING)
   paymentMethod PaymentMethod
   total Int
   observations String? @db.Text

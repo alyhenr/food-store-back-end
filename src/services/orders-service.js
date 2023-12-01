@@ -11,7 +11,7 @@ async function validateAdditional(additionalId) {
     if (!additional) throw appErrors("Additional does not exist").badRequest();
 }
 
-async function create(clientName, productId, quantity, total, additionals) {
+async function create(clientName, productId, quantity, total, paymentMethod, observations, additionals) {
     const product = await productsRepository.findById(id);
     if (!product) throw appErrors("Product not found").notFound();
 
@@ -26,7 +26,7 @@ async function create(clientName, productId, quantity, total, additionals) {
         }
     }
 
-    const newOrder = await ordersRepository.create(client.id, productId, quantity, total);
+    const newOrder = await ordersRepository.create(client.id, productId, quantity, total, paymentMethod, observations);
 
     if (additionals) {
         for (let i = 0; i < additionals.length; ++i) {

@@ -7,6 +7,7 @@ export const ordersSchema = Joi.object({
     total: Joi.number().positive(),
     observations: Joi.string(),
     additionals: Joi.array().items(Joi.string()),
+    paymentMethod: Joi.string().valid('DEBIT', 'CREDIT', 'MONEY'),
 });
 
 export const ordersIdSchema = Joi.object({
