@@ -13,7 +13,7 @@ datasource db {
 model Client {
   id String @id @default(cuid())
   name String @db.VarChar(50)
-  code Int @default(autoincrement())
+  code Int? @default(autoincrement())
 
   orders Order[]
 }
