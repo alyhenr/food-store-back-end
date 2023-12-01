@@ -6,6 +6,13 @@ async function post(req, res) {
 
     res.send(newClient);
 }
+
+async function get(_req, res) {
+    const clients = await clientsService.findAll();
+
+    res.send(clients);
+}
+
 export const clientsController = {
-    post,
+    post, get
 };

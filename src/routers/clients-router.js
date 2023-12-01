@@ -6,6 +6,8 @@ import { clientsSchema } from "../schemas/clients-schemas.js";
 
 const clientsRouter = Router();
 
-clientsRouter.post("/", validateBody(clientsSchema), clientsController.post);
+clientsRouter
+    .post("/", validateBody(clientsSchema), clientsController.post)
+    .get("/", clientsController.get);
 
 export { clientsRouter };

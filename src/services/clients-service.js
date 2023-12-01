@@ -10,6 +10,10 @@ async function create(name) {
     return clientsRepository.create(name);
 }
 
+async function findAll() {
+    return clientsRepository.findAll();
+}
+
 export const clientsService = {
-    create,
+    create, findAll
 };

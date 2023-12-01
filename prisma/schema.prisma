@@ -54,11 +54,11 @@ enum OrderStatus {
 model Order {
   id String @id @default(cuid())
 
-  client Client @relation(fields: [client_id], references: [id])
-  client_id String
+  client Client @relation(fields: [clientId], references: [id])
+  clientId String
 
-  product Product @relation(fields: [product_id], references: [id])
-  product_id String
+  product Product @relation(fields: [productId], references: [id])
+  productId String
 
   quantity Int
   status OrderStatus
