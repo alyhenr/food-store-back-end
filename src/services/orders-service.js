@@ -46,7 +46,10 @@ async function updateStatus(id, status) {
     if (order.status === 'FINISHED') throw appErrors("Order already finished").forbidden();
     if (order.status === 'CANCELLED') throw appErrors("Order was cancelled").forbidden();
 
-    return ordersRepository.updateStatus(id, status);
+    const updatedOrder = await ordersRepository.updateStatus(id, status);
+    await clientsRepository.finishOrder(updatedOrder.clientId);
+
+    return updatedOrder;
 }
 
 export const ordersService = {

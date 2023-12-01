@@ -13,6 +13,7 @@ datasource db {
 model Client {
   id String @id @default(cuid())
   name String @db.VarChar(50)
+  code Int?
 
   orders Order[]
 }
@@ -51,6 +52,12 @@ enum OrderStatus {
   CANCELLED
 }
 
+enum PaymentMethod {
+  CREDIT
+  DEBIT
+  MONEY
+}
+
 model Order {
   id String @id @default(cuid())
 
@@ -62,6 +69,7 @@ model Order {
 
   quantity Int
   status OrderStatus
+  paymentMethod PaymentMethod
   total Int
   observations String? @db.Text
 

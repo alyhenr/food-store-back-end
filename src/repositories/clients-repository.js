@@ -32,6 +32,13 @@ async function deleteById(id) {
     });
 }
 
+async function finishOrder(id) {
+    return await prisma.client.update({
+        where: { id, },
+        data: { code: null }
+    })
+}
+
 export const clientsRepository = {
-    create, findById, findByName, findAll, deleteById
+    create, findById, findByName, findAll, deleteById, finishOrder
 };
