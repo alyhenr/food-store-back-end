@@ -8,6 +8,7 @@ const ordersRouter = Router();
 
 ordersRouter
     .post("/", validateBody(ordersSchema), ordersController.post)
+    .get("/", ordersController.get)
     .put("/:id", validateParams(ordersIdSchema), ordersController.updateStatus);
 
 export { ordersRouter };

@@ -7,6 +7,12 @@ async function post(req, res) {
     res.send(newOrder);
 }
 
+async function get(_req, res) {
+    const orders = await ordersService.findAll();
+
+    res.send(orders);
+}
+
 async function updateStatus(req, res) {
     const { id } = req.params;
     const { status } = req.body;
@@ -17,5 +23,5 @@ async function updateStatus(req, res) {
 }
 
 export const ordersController = {
-    post, updateStatus
+    post, get, updateStatus,
 };

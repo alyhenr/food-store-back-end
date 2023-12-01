@@ -31,6 +31,10 @@ async function create(clientId, productId, quantity, total, additionals) {
     return newOrder;
 };
 
+function findAll() {
+    return ordersRepository.findAll();
+}
+
 async function updateStatus(id, status) {
     const order = await ordersRepository.findById(id);
     if (!order) throw appErrors("Order not found").notFound();
@@ -42,5 +46,5 @@ async function updateStatus(id, status) {
 }
 
 export const ordersService = {
-    create, updateStatus
+    create, findAll, updateStatus,
 };
