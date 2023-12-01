@@ -1,9 +1,9 @@
 import { prisma } from "../config/database.js";
 
-async function create(name, code) {
+async function create(name) {
     return await prisma.client.create({
         data: {
-            name, code
+            name
         }
     });
 }
@@ -32,20 +32,6 @@ async function deleteById(id) {
     });
 }
 
-async function updateCode(id, code) {
-    return await prisma.client.update({
-        where: { id, },
-        data: { code, },
-    })
-}
-
-async function finishOrder(id) {
-    return await prisma.client.update({
-        where: { id, },
-        data: { code: null }
-    })
-}
-
 export const clientsRepository = {
-    create, findById, findByName, findAll, deleteById, updateCode, finishOrder
+    create, findById, findByName, findAll, deleteById,
 };
