@@ -11,13 +11,15 @@ async function validateAdditional(additionalId) {
     if (!additional) throw appErrors("Additional does not exist").badRequest();
 }
 
-async function create(clientName, productId, quantity, total, paymentMethod, observations, additionals) {
+async function create(clientName, productId, quantity, total, paymentMethod, observations, additionals, clientCode) {
     const product = await productsRepository.findById(productId);
     if (!product) throw appErrors("Product not found").notFound();
 
     let client = await clientsRepository.findByName(clientName);
     if (!client) {
-        client = await clientsRepository.create(clientName)
+        client = await clientsRepository.create(clientName, clientCode)
+    } else {
+        await clientsRepository.updateCode(client.id, clientCode);
     }
 
     if (additionals?.length) {
