@@ -41,12 +41,12 @@ Seguindo o fluxo da aplicacao, como admin (no momento, apenas acessar a rota "/a
 > GET /clients, retorna todos os clientes registrados, podendo o mesmo cliente aparacer mais de uma vez, mas com um codigo diferente, relacionado a alguma ordem feita. Se um cliente tem multiplas ordens, ele tera multiplos registros
 
 ```json
-    [
-        {
-            "name": "Nome do client",
-            "code": 1 // inteiro auto incrementado no banco de dados
-        }, ...
-    ]
+[
+  {
+    "name": "Nome do cliente",
+    "code": 1 // autoincremet int
+  }
+]
 ```
 
 > POST /categories para criar uma nova categoria, body esperado:
@@ -61,12 +61,12 @@ Seguindo o fluxo da aplicacao, como admin (no momento, apenas acessar a rota "/a
 > GET /categories, retorna todas as categorias criadas:
 
 ```json
-    [
-        {
-            "name": "Nome da categoria",
-            "imageUrl": "Link para uma foto representativa"
-        }, ...
-    ]
+[
+  {
+    "name": "Nome da categoria",
+    "imageUrl": "Link para uma foto representativa"
+  }
+]
 ```
 
 > POST /products para criar um novo produto, body esperado:
@@ -76,7 +76,7 @@ Seguindo o fluxo da aplicacao, como admin (no momento, apenas acessar a rota "/a
   "name": "Nome do produto",
   "imageUrl": "Link para imagem representativa",
   "description": "Descricao do produto",
-  "price": 100, //preco em centavos (inteiro)
+  "price": 100, //Em centavos (inteiro)
   "categoryId": "id da categoria que pertence o produto"
 }
 ```
@@ -89,7 +89,7 @@ Seguindo o fluxo da aplicacao, como admin (no momento, apenas acessar a rota "/a
     "name": "Nome do produto",
     "imageUrl": "Link para imagem representativa",
     "description": "Descricao do produto",
-    "price": 100, //preco em centavos (inteiro)
+    "price": 100, //Em centavos (inteiro)
     "categoryId": "id da categoria que pertence o produto"
   }, ...
 ]
@@ -102,7 +102,7 @@ Seguindo o fluxo da aplicacao, como admin (no momento, apenas acessar a rota "/a
   "name": "Nome do adicional",
   "description": "Descricao",
   "imageUrl": "Link para imagem representativa",
-  "price": 100 //Preco em centavos (inteiro)
+  "price": 100 //Em centavos (inteiro)
 }
 ```
 
@@ -110,12 +110,12 @@ Seguindo o fluxo da aplicacao, como admin (no momento, apenas acessar a rota "/a
 
 ```json
 [
-    {
-        name: "Nome do adicional",
-        description: "Descricao",
-        imageUrl: "Link para imagem representativa",
-        price: 100, //Preco em centavos (inteiro)
-    }, ...
+  {
+    "name": "Nome do adicional",
+    "description": "Descricao",
+    "imageUrl": "Link para imagem representativa",
+    "price": 100 //Em centavos (inteiro)
+  }
 ]
 ```
 
@@ -145,25 +145,25 @@ Seguindo o fluxo da aplicacao, como admin (no momento, apenas acessar a rota "/a
 
 ```json
 [
-    {
-       productId: "id do produto",
-        clientName: "Nome do cliente",
-        quantity: 3, //quantidade do produto
-        total: 20.50, //valor do produto mais adicionais
-        observations: "Observacoes feitas pelo cliente",
-        additionals: ["id do adicional", "id de outro adicional"],
-        paymentMethod: 'CREDIT', //enum, aceita 'CREDIT', 'DEBIT' e 'MONEY'
-        product: {
-            "name": "Nome do produto",
-            "imageUrl": "Link para imagem representativa",
-            "description": "Descricao do produto",
-            "price": 100, //preco em centavos (inteiro)
-            "categoryId": "id da categoria que pertence o produto"
-        },
-        client: {
-            "name": "Nome do client",
-            "code": 1 // inteiro auto incrementado no banco de dados
-        }
-    }, ...
+  {
+    "productId": "id do produto",
+    "clientName": "Nome do cliente",
+    "quantity": 3, //quantidade do produto
+    "total": 20.5, //valor do produto mais adicionais
+    "observations": "Observacoes feitas pelo cliente",
+    "additionals": ["id do adicional", "id de outro adicional"],
+    "paymentMethod": "CREDIT", //enum, aceita 'CREDIT', 'DEBIT' e 'MONEY'
+    "product": {
+      "name": "Nome do produto",
+      "imageUrl": "Link para imagem representativa",
+      "description": "Descricao do produto",
+      "price": 100, //preco em centavos (inteiro)
+      "categoryId": "id da categoria que pertence o produto"
+    },
+    "client": {
+      "name": "Nome do client",
+      "code": 1 // inteiro auto incrementado no banco de dados
+    }
+  }
 ]
 ```
