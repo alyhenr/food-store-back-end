@@ -1,4 +1,4 @@
-# Devio Challenge - Food Store
+# Food Store
 
 ### Deploy: https://devio-backend-wb03.onrender.com
 
